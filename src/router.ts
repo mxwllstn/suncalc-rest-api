@@ -1,7 +1,7 @@
 import express, { Router, Request, Response } from 'express'
 import utils from './lib/utils'
 import suncalc from 'suncalc'
-import dayjs from './lib/dayjs'
+import dayjs from 'dayjs'
 const { throwError, handleResponse, handleError } = utils
 
 const router = <Router>express.Router()
