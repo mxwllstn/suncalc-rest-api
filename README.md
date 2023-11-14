@@ -24,7 +24,7 @@ The SunCalc REST API is described below.
 
 ### Request
 
-`GET /position/:date/:latitude,:longitude`
+`GET /api/position/:date/:latitude,:longitude`
 
 ```curl
 curl --request GET \
@@ -44,7 +44,7 @@ curl --request GET \
 
 ### Request
 
-`GET /position/now/:latitude,:longitude`
+`GET /api/position/now/:latitude,:longitude`
 
 ```curl
 curl --request GET \
@@ -64,7 +64,7 @@ curl --request GET \
 
 ### Request
 
-`GET /times/2023-11-13/:latitude,:longitude`
+`GET /api/times/2023-11-13/:latitude,:longitude`
 
 ```curl
 curl --request GET \
@@ -96,7 +96,7 @@ curl --request GET \
 
 ### Request
 
-`GET /times/now/:latitude,:longitude`
+`GET /api/times/now/:latitude,:longitude`
 
 ```curl
 curl --request GET \
@@ -147,7 +147,7 @@ type TimeTypes =
 
 ### Request
 
-`GET /times/2023-11-13/:latitude,:longitude?type=:timeType`
+`GET /api/times/2023-11-13/:latitude,:longitude?type=:timeType`
 
 ```curl
 curl --request GET \
