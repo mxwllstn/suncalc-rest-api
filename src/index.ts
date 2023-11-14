@@ -1,10 +1,11 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Express, Request, Response, Router } from 'express'
 import suncalc from 'suncalc'
 import dayjs from 'dayjs'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const app = <Express>express()
+const router = <Router>express.Router()
 
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 8081
@@ -57,7 +58,7 @@ const parseError = (error: any): any => {
   }
 }
 
-app.get('/api/:calc/:date/:latitude,:longitude', (req: Request, res: Response): void => {
+router.get('/:calc/:date/:latitude,:longitude', (req: Request, res: Response): void => {
   try {
     const timeTypes = [
       'solarNoon',
@@ -105,3 +106,5 @@ app.get('/api/:calc/:date/:latitude,:longitude', (req: Request, res: Response): 
     handleError(res, error)
   }
 })
+
+app.use('/api', router)
