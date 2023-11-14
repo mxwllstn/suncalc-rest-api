@@ -1,7 +1,4 @@
 import { Response } from 'express'
-export type Id = string | number
-export type Item = Record<string, unknown>
-export type List = Item[]
 
 export type Data = Record<string, unknown>
 
@@ -11,10 +8,6 @@ export type ApiResponse = {
 }
 
 const utils = {
-  groupByKey: (list: any[], key: string | number): any =>
-    list.reduce((hash, obj) => ({ ...hash, [obj[key]]: (hash[obj[key]] || []).concat(obj) }), {}),
-  isObject: (data: Record<string, unknown>): boolean => typeof data === 'object' && !!data,
-  isEmptyObject: (data: Record<string, unknown>): boolean => utils.isObject(data) && Object.keys(data).length === 0,
   throwError: (message: any, status = 400): Promise<any> => {
     throw new Error(JSON.stringify({ status, message }))
   },
@@ -25,9 +18,6 @@ const utils = {
   handleError: (res: Response, error: any): void => {
     const { status, message } = utils.parseError(error)
     res.status(status).send({ message })
-  },
-  parseThrownError: (error: any): any => {
-    return JSON.parse(error.message)
   },
   parseError: (error: any): any => {
     if (error?.response) {
@@ -48,9 +38,7 @@ const utils = {
         return { status: status || 400, message: message || 'Internal Server Error' }
       }
     }
-  },
-  kebabize: (str: string) => str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase()),
-  camelize: (str: string) => str.replace(/-./g, x=>x[1].toUpperCase())
+  }
 }
 
 export default utils
