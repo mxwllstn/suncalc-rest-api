@@ -1,5 +1,7 @@
 # suncalc-rest-api
 
+Express.js/TypeScript Rest API integrating with [suncalc](https://github.com/mourner/suncalc) for accessing the ☀️'s data based on location and time.
+
 ## Build Setup
 
 ```bash
