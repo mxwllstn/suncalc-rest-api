@@ -1,0 +1,55 @@
+{
+  "name": "ts-api-boilerplate",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "start": "NODE_PATH=./ ts-node-dev --respawn --require dotenv/config src/server.ts",
+    "start:dev": "NODE_PATH=./ ts-node-dev --inspect=4321 --respawn --require dotenv/config src/server.ts",
+    "run-tasks": "NODE_PATH=./ ts-node-dev --require dotenv/config src/tasks.ts",
+    "lint": "eslint --fix src/index.ts src/lib/* src/server.ts src/router.ts src/tasks.ts",
+    "postinstall": "yarn build"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.16",
+    "@types/express": "^4.17.21",
+    "@types/minimist": "^1.2.5",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.9.0",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "minimist": "^1.2.8",
+    "morgan": "^1.10.0",
+    "morgan-body": "^2.6.9",
+    "suncalc": "^1.9.0",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/suncalc": "^1.9.2",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint": "^8.53.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "ts-node-dev": "^2.0.0"
+  },
+  "engines": {
+    "node": "^18.x"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
