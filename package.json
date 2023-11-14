@@ -1,14 +1,14 @@
 {
   "name": "ts-api-boilerplate",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc",
     "start": "NODE_PATH=./ ts-node-dev --respawn --require dotenv/config src/server.ts",
     "start:dev": "NODE_PATH=./ ts-node-dev --inspect=4321 --respawn --require dotenv/config src/server.ts",
     "run-tasks": "NODE_PATH=./ ts-node-dev --require dotenv/config src/tasks.ts",
-    "lint": "eslint --fix src/index.ts src/lib/* src/server.ts src/router.ts src/tasks.ts",
+    "lint": "eslint --fix src/lib/* src/server.ts src/router.ts src/tasks.ts",
     "postinstall": "yarn build"
   },
   "dependencies": {
