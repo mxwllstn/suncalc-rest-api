@@ -7,8 +7,7 @@
     "build": "rm -rf dist && tsc",
     "start": "NODE_PATH=./ ts-node-dev --respawn --require dotenv/config src/server.ts",
     "start:dev": "NODE_PATH=./ ts-node-dev --inspect=4321 --respawn --require dotenv/config src/server.ts",
-    "run-tasks": "NODE_PATH=./ ts-node-dev --require dotenv/config src/tasks.ts",
-    "lint": "eslint --fix src/lib/* src/server.ts src/router.ts src/tasks.ts",
+    "lint": "eslint --fix src/lib/* src/server.ts src/router.ts",
     "postinstall": "yarn build"
   },
   "dependencies": {
