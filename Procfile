@@ -1,1 +1,1 @@
-web: NODE_PATH=dist/ node dist/server.js
+web: NODE_PATH=dist/ node dist/index.js

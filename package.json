@@ -1,13 +1,13 @@
 {
   "name": "ts-api-boilerplate",
   "version": "1.0.0",
-  "main": "dist/server.js",
-  "types": "dist/server.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "start": "NODE_PATH=./ ts-node-dev --respawn --require dotenv/config src/server.ts",
-    "start:dev": "NODE_PATH=./ ts-node-dev --inspect=4321 --respawn --require dotenv/config src/server.ts",
-    "lint": "eslint --fix src/lib/* src/server.ts src/router.ts",
+    "start": "NODE_PATH=./ ts-node-dev --respawn --require dotenv/config src/index.ts",
+    "start:dev": "NODE_PATH=./ ts-node-dev --inspect=4321 --respawn --require dotenv/config src/index.ts",
+    "lint": "eslint --fix src/index.ts",
     "postinstall": "yarn build"
   },
   "dependencies": {
@@ -15,9 +15,6 @@
     "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "minimist": "^1.2.8",
-    "morgan": "^1.10.0",
-    "morgan-body": "^2.6.9",
     "suncalc": "^1.9.0",
     "typescript": "^5.2.2"
   },
