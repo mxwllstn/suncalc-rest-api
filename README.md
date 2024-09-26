@@ -6,13 +6,13 @@ Express.js/TypeScript Rest API integrating with [suncalc](https://github.com/mou
 
 ```bash
 # install dependencies
-$ yarn install
+$ pnpm run install
 
 # run server
-$ yarn start:dev
+$ pnpm run dev
 
 # build module
-$ yarn build
+$ pnpm run build
 
 ```
 

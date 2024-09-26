@@ -4,11 +4,11 @@ import dayjs from 'dayjs'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const app = <Express>express()
-const router = <Router>express.Router()
+const app = express() as Express
+const router = express.Router() as Router
 
-const host = process.env.HOST || '0.0.0.0'
-const port = process.env.PORT || 8081
+const host = process.env.HOST ?? '0.0.0.0'
+const port = process.env.PORT ?? 8081
 
 app.listen(port, () => {
   console.log(`App listening at ${host}:${port}`)
@@ -16,18 +16,20 @@ app.listen(port, () => {
 
 export type Data = Record<string, unknown>
 
-export type ApiResponse = {
+export interface ApiResponse {
   data: Data | Data[]
   status?: number
 }
 
-const throwError = (message: any, status = 400): Promise<any> => {
+const throwError = (message: any, status = 400): any => {
   throw new Error(JSON.stringify({ status, message }))
 }
 const handleResponse = (res: Response, response: ApiResponse): void => {
   const { status, data } = response
-  process.env.NODE_ENV !== 'production' && console.log({ status: status || 200, data })
-  res.status(status || 200).send(data)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log({ status: status ?? 200, data })
+  }
+  res.status(status ?? 200).send(data)
 }
 const handleError = (res: Response, error: any): void => {
   const { status, message } = parseError(error)
@@ -74,7 +76,7 @@ router.get('/:calc/:date/:latitude,:longitude', (req: Request, res: Response): v
       'nightEnd',
       'night',
       'goldenHourEnd',
-      'goldenHour'
+      'goldenHour',
     ] as const
 
     const type = req.query.type as TimeTypes
@@ -92,8 +94,8 @@ router.get('/:calc/:date/:latitude,:longitude', (req: Request, res: Response): v
     const longitude = Number(req.params.longitude)
     const date = req.params.date === 'now' ? new Date() : new Date(dayjs(req.params.date).format())
     const times = suncalc.getTimes(date, latitude, longitude)
-    const data =
-      calc === 'position'
+    const data
+      = calc === 'position'
         ? (suncalc.getPosition(times.sunrise, latitude, longitude) as any)
         : calc === 'times'
           ? times[type]
