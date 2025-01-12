@@ -13,8 +13,7 @@
     "outDir": "dist",
     "declaration": true,
     "resolveJsonModule": true,
-    "allowJs": true,
   },
-  "include": ["src/**/*.js", "src/**/*.ts", "**/eslint.config.js"],
+  "include": ["src/**/*.js", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
