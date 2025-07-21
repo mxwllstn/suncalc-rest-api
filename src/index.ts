@@ -37,25 +37,25 @@ const handleError = (res: Response, error: any): void => {
 }
 const parseError = (error: any): any => {
   if (error?.response) {
-    const { status, data } = error?.response || {}
+    const { status, data } = error?.response ?? {}
     console.log({ status, message: data })
     return { status, message: data }
   } else {
     try {
       if (error?.body) {
-        const { status, message } = JSON.parse(error?.body) || {}
+        const { status, message } = JSON.parse(error?.body) ?? {}
         console.log({ status, message })
         return { status, message }
       } else {
-        const { status, message } = JSON.parse(error?.message) || {}
+        const { status, message } = JSON.parse(error?.message) ?? {}
         console.log({ status, message })
         return { status, message }
       }
     } catch {
       console.log(error)
-      const { status, message } = error || {}
-      console.log({ status: status || 400, message: message || 'Internal Server Error' })
-      return { status: status || 400, message: message || 'Internal Server Error' }
+      const { status, message } = error ?? {}
+      console.log({ status: status ?? 400, message: message ?? 'Internal Server Error' })
+      return { status: status ?? 400, message: message ?? 'Internal Server Error' }
     }
   }
 }
