@@ -1,52 +1,54 @@
 {
   "name": "suncalc-rest-api",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "author": "Max Stein <maxwell.stein@gmail.com> (https://maxstein.net",
   "license": "MIT",
   "description": "Express.js/TypeScript Rest API integrating with suncalc for accessing the sun's data based on location and time",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
     "dist"
   ],
   "type": "module",
   "scripts": {
-    "build": "rm -rf dist && tsc --project ./tsconfig.build.json",
-    "dev": "touch .env && node --env-file=.env --import=tsx --watch ./src/index.ts",
-    "serve": "node dist/index.js",
-    "start": "pnpm run build && node dist/index.js",
+    "build": "unbuild",
+    "dev": "tsx --env-file-if-exists=.env src/index.ts",
+    "start": "pnpm run build && pnpm run serve",
+    "serve": "node --env-file-if-exists=.env dist/index.mjs",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint --fix .",
     "postinstall": "pnpm run build"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dayjs": "^1.11.13",
-    "dotenv": "^16.6.1",
-    "express": "^4.21.2",
+    "dayjs": "^1.11.18",
+    "express": "^5.1.0",
     "suncalc": "^1.9.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
-    "@stylistic/eslint-plugin": "^2.13.0",
+    "@eslint/js": "^9.37.0",
+    "@stylistic/eslint-plugin": "^5.4.0",
     "@types/cors": "^2.8.19",
-    "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.3",
     "@types/minimist": "^1.2.5",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^22.16.5",
+    "@types/node": "^24.7.2",
     "@types/suncalc": "^1.9.2",
-    "eslint": "^9.31.0",
-    "globals": "^15.15.0",
-    "jiti": "^2.4.2",
-    "lint-staged": "^15.5.2",
+    "eslint": "^9.37.0",
+    "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.4",
     "prettier": "^3.6.2",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0"
+    "tsx": "^4.20.6",
+    "typescript-eslint": "^8.46.1",
+    "unbuild": "^3.6.1"
   },
   "engines": {
-    "node": ">20.x"
+    "node": ">=22.x"
   },
   "lint-staged": {
     "*.{ts,js}": [

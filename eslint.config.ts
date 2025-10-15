@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint'
 import stylistic from '@stylistic/eslint-plugin'
 import globals from 'globals'
 
-export default tseslint.config(
+export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.recommended,
@@ -39,6 +39,7 @@ export default tseslint.config(
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+      '@typescript-eslint/prefer-nullish-coalescing': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: false }],
       '@stylistic/no-mixed-operators': 'error',
@@ -52,9 +53,10 @@ export default tseslint.config(
       '@typescript-eslint/restrict-template-expressions': 'off',
       // revisit - stylisticTypeChecked
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
     },
   },
   {
     ignores: ['**/dist/**/*', '**/node_modules/**/*'],
   },
-)
+]

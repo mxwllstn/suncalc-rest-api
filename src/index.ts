@@ -1,11 +1,9 @@
-import express, { Express, Request, Response, Router } from 'express'
+import express, { type Request, type Response } from 'express'
 import suncalc from 'suncalc'
 import dayjs from 'dayjs'
-import dotenv from 'dotenv'
-dotenv.config()
 
-const app = express() as Express
-const router = express.Router() as Router
+const app = express()
+const router = express.Router()
 
 const host = process.env.HOST ?? '0.0.0.0'
 const port = process.env.PORT ?? 8081
