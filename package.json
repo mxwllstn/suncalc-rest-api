@@ -16,9 +16,9 @@
   "type": "module",
   "scripts": {
     "build": "unbuild",
-    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "start": "pnpm run build && pnpm run serve",
-    "serve": "node --env-file-if-exists=.env dist/index.mjs",
+    "serve": "node dist/index.mjs",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint --fix .",
     "postinstall": "pnpm run build"
